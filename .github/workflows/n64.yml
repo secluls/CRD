@@ -23,11 +23,10 @@ jobs:
           wget -O 64.zip https://archive.org/download/ultra-64-2-gig-scsi-irix-53-confirmed-2/ULTRA64_2GIG_SCSI_IRIX53_confirmed2.zip
           unzip 64.zip
           ls
-          cd 64
           mv "ULTRA64_2GIG_SCSI_IRIX53_confirmed2.img" "n64.img"
           chdman createhd -i "n64.img" -o "n64.chd" -c none -f
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: irixHDD
-        path: ${{github.workspace}}/64/n64,chd
+        path: ${{github.workspace}}/n64.chd
