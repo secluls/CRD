@@ -30,3 +30,13 @@ jobs:
       with:
         name: irixHDD
         path: ${{github.workspace}}/n64.chd
+
+
+    - name: Upload Releases
+      uses: xresloader/upload-to-github-release@v1
+      env:
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+       default_release_name: irixhdd
+       file: ${{github.workspace}}/n64.chd
+        
