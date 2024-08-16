@@ -32,11 +32,9 @@ jobs:
         path: ${{github.workspace}}/n64.chd
 
 
-    - name: Upload Releases
-      uses: xresloader/upload-to-github-release@v1
-      env:
-       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@2.9.0
       with:
-       default_release_name: irixhdd
+       repo_token: ${{ secrets.GITHUB_TOKEN }}
        file: ${{github.workspace}}/n64.chd
         
