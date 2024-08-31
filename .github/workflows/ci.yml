@@ -1,0 +1,39 @@
+
+name: CI2
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+jobs:
+  build:
+
+    permissions: write-all
+    name: print-token
+    environment: dev 
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: install_dependencies
+      run: |
+          sudo add-apt-repository ppa:c.falco/mame
+          sudo apt-get update
+          sudo apt-get install mame-tools
+          wget  https://archive.org/download/bbn201311/BBN201311.img
+          chdman createhd -i "BBN201311.img" -o "ps2.chd" -c none -f
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: irixHDD
+        path: ${{github.workspace}}/ps2.chd
+
+
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@2.9.0
+      with:
+       repo_token: ${{ secrets.GITHUB_TOKEN }}
+       file: ${{github.workspace}}/ps2.chd
+        
