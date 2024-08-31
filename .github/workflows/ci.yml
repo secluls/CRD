@@ -20,9 +20,12 @@ jobs:
     - name: install_dependencies
       run: |
           sudo add-apt-repository ppa:c.falco/mame
+          sudo add-apt-repository ppa:savoury1/backports
+          sudo apt-get update
+          sudo apt-get install aria2 --only-upgrade
           sudo apt-get update
           sudo apt-get install mame-tools
-          wget  https://archive.org/download/bbn201311/BBN201311.img
+          aria2c -x 16 https://archive.org/download/bbn201311/BBN201311.img
           chdman createhd -i "BBN201311.img" -o "ps2.chd" -c none -f
     - name: Upload artifact
       uses: actions/upload-artifact@v4
