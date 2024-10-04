@@ -19,9 +19,8 @@ jobs:
     - uses: actions/checkout@v3
     - name: install_dependencies
       run: |
-          sudo add-apt-repository ppa:c.falco/mame
           sudo apt-get update
-          wget -mpEk --wait 20 "http://www.netyaroze-europe.com/cgi-bin/homepage/listsceehome.cgi"
+          wget -mpEk --wait 4 "http://www.netyaroze-europe.com/cgi-bin/homepage/listsceehome.cgi"
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
