@@ -21,23 +21,17 @@ jobs:
       run: |
           sudo add-apt-repository ppa:c.falco/mame
           sudo apt-get update
-          sudo apt-get install mame-tools
-          sudo apt-get install unzip
-          wget -O 64.zip https://archive.org/download/ultra-64-2-gig-scsi-irix-53-confirmed-2/ULTRA64_2GIG_SCSI_IRIX53_confirmed2.zip
-          unzip 64.zip
-          ls
-          mv "ULTRA64_2GIG_SCSI_IRIX53_confirmed2.img" "n64.img"
-          chdman createhd -i "n64.img" -o "n64.chd" -c none -f
+          wget -mpEk --wait 20 "http://www.netyaroze-europe.com/cgi-bin/homepage/listsceehome.cgi"
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: irixHDD
-        path: ${{github.workspace}}/n64.chd
+        name: Yaroze
+        path: ${{github.workspace}}
 
 
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@2.9.0
       with:
        repo_token: ${{ secrets.GITHUB_TOKEN }}
-       file: ${{github.workspace}}/n64.chd
+       file: ${{github.workspace}}
         
