@@ -24,7 +24,7 @@ jobs:
        chmod +x ./scrpt.sh
        ./scrpt.sh
        cd bign
-       tar czf bign.tar.gz .
+       tar czf bign.tar.gz . --warning=no-file-changed
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
