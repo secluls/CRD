@@ -21,6 +21,7 @@ jobs:
       run: |
        sudo apt-get install jq
        mkdir bign
+       chmod +x ./scrpt.sh
        ./scrpt.sh
        cd bign
        tar czf bign.tar.gz .
