@@ -22,7 +22,7 @@ jobs:
        pip install gdown --break-system-packages
        mkdir bign
        cd bign
-       gdown https://drive.google.com/drive/folders/1BDc1vXUC90b2vEDqUFtTaJtR-C7JULld --folder
+       gdown https://drive.google.com/drive/folders/1BDc1vXUC90b2vEDqUFtTaJtR-C7JULld --folder --continue
        tar czf bign.tar.gz .
     - name: Upload artifact
       uses: actions/upload-artifact@v4
