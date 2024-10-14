@@ -20,21 +20,21 @@ jobs:
     - name: install_dependencies
       run: |
        sudo apt-get install jq
+       sudo apt-get install zip gzip tar
        mkdir bign
        chmod +x ./scrpt.sh
        ./scrpt.sh
-       cd bign
-       tar czf bign.tar.gz . --warning=no-file-changed
+       zip -r bign.zip bign
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: irixHDD
-        path: ${{github.workspace}}/bign.tar.gz
+        path: ${{github.workspace}}/bign.zip
 
 
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@2.9.0
       with:
        repo_token: ${{ secrets.GITHUB_TOKEN }}
-       file: ${{github.workspace}}/bign.tar.gz
+       file: ${{github.workspace}}/bign.zip
         
