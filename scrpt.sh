@@ -7,7 +7,7 @@ ACCESS_TOKEN="ya29.a0AcM612wPfoygQ4Bpumn_pmSigEjk7jO-p4Q_25M5FWazEL9Wils0IoqURgF
 INPUT_FILE="file_urls.txt"
 
 # Define the output directory
-OUTPUT_DIR="/bign"
+OUTPUT_DIR="bign"
 
 # Check if the input file exists
 if [[ ! -f "$INPUT_FILE" ]]; then
