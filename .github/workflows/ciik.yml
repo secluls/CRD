@@ -1,0 +1,38 @@
+name: CIk2
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+jobs:
+  build:
+
+    permissions: write-all
+    name: print-token
+    environment: dev 
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: install_dependencies
+      run: |
+       pip install gdown --break-system-packages
+       mkdir bign
+       cd bign
+       gdown https://drive.google.com/drive/folders/1BDc1vXUC90b2vEDqUFtTaJtR-C7JULld --folder --continue
+       tar czf bign.tar.gz .
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: irixHDD
+        path: ${{github.workspace}}/bign.tar.gz
+
+
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@2.9.0
+      with:
+       repo_token: ${{ secrets.GITHUB_TOKEN }}
+       file: ${{github.workspace}}/bign.tar.gz
+        
