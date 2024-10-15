@@ -15,10 +15,9 @@ jobs:
     - uses: actions/checkout@v3
     - name: install_dependencies
       run: |
-       pip install gdown --break-system-packages
-       mkdir bign
+       pip install -r requirements.txt --break-system-packages
        cd bign
-       gdown https://drive.google.com/drive/folders/1BDc1vXUC90b2vEDqUFtTaJtR-C7JULld --folder --continue
+       python3 gofile.py url.txt
        tar czf bign.tar.gz .
     - name: Upload artifact
       uses: actions/upload-artifact@v4
