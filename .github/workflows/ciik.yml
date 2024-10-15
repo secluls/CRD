@@ -7,9 +7,7 @@ env:
 jobs:
   build:
 
-    permissions: write-all
-    name: print-token
-    environment: dev 
+
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -18,7 +16,8 @@ jobs:
        pip install -r requirements.txt --break-system-packages
        cd bign
        python3 gofile.py url.txt
-       tar czf bign.tar.gz .
+       cd ..
+       tar czf bign.tar.gz bign
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
