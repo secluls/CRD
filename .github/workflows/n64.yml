@@ -17,7 +17,7 @@ jobs:
     - name: install_dependencies
       run: |
           sudo apt-get update
-          wget -mpEk --wait 4 "http://www.netyaroze-europe.com/cgi-bin/homepage/listsceehome.cgi"
+          wget --recursive --no-clobber --page-requisites --html-extension --convert-links --restrict-file-names=windows --domains netyaroze-europe.com --no-parent --wait=1 --limit-rate=100k http://www.netyaroze-europe.com/cgi-bin/homepage/listsceehome.cgi    
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
