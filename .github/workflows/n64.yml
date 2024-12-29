@@ -9,15 +9,13 @@ jobs:
   build:
 
     permissions: write-all
-    name: print-token
-    environment: dev 
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - name: install_dependencies
       run: |
           sudo apt-get update
-          wget --recursive --no-clobber --page-requisites --html-extension --convert-links --restrict-file-names=windows --domains netyaroze-europe.com --no-parent --wait=1 --limit-rate=100k http://www.netyaroze-europe.com/cgi-bin/homepage/listsceehome.cgi    
+          wget --recursive --no-clobber --page-requisites --html-extension --convert-links --restrict-file-names=windows --domains netyaroze-europe.com --no-parent --wait=1 --limit-rate=100k --no-check-certificate --user-agent="Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)" --execute robots=off http://www.netyaroze-europe.com/cgi-bin/homepage/listsceehome.cgi    
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
