@@ -15,7 +15,8 @@ jobs:
     - name: install_dependencies
       run: |
           sudo apt-get update
-          wget --recursive --no-clobber --page-requisites --html-extension --convert-links --restrict-file-names=windows --domains netyaroze-europe.com --no-parent --wait=1 --limit-rate=100k --no-check-certificate --user-agent="Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)" --execute robots=off http://www.netyaroze-europe.com/cgi-bin/homepage/listsceehome.cgi    
+          sudo apt-get install httrack
+          httrack "http://www.netyaroze-europe.com/cgi-bin/homepage/listsceehome.cgi" -O "netyaroze-europe.com" "+*.netyaroze-europe.com/*" -v -w 2 --robots=0 --disable-security-limits    
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
