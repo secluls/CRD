@@ -1,0 +1,35 @@
+
+name: dish
+on:
+ workflow_dispatch:
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+jobs:
+  build:
+
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: install_dependencies
+      run: |
+          sudo apt-get update
+          
+
+
+
+
+    - name: Setup SteamCMD
+      uses: CyberAndrii/setup-steamcmd@v1.2.0
+
+    - name: Update app
+      run: steamcmd +login frredman redpilled +app_update 2525310 validate +quit
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: Yaroze
+        path: .
+
+
+    
