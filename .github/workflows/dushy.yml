@@ -1,4 +1,6 @@
 
+
+
 name: dish
 on:
  workflow_dispatch:
@@ -7,6 +9,7 @@ env:
   BUILD_TYPE: Release
 jobs:
   build:
+
 
     permissions: write-all
     runs-on: ubuntu-latest
@@ -20,16 +23,23 @@ jobs:
 
 
 
+
+
+
+
     - name: Setup SteamCMD
       uses: CyberAndrii/setup-steamcmd@v1.2.0
 
+
     - name: Update app
-      run: steamcmd +login frredman redpilled +app_update 2525310 validate +quit
+      run: steamcmd +login frredman redpilled +app_update 3112480 validate +quit
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: Yaroze
         path: .
+
+
 
 
     
